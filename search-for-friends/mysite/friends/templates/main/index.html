@@ -1,4 +1,5 @@
 
+
 <!doctype html>
 <html lang="ru">
 <head>
@@ -11,48 +12,74 @@
     <style>
         h1{
             font-weight: normal;
-            font-size: 62px;
-            position: relative;
-            top: 53px;
-            left:254px;
+            font-size: 4.1vw;
+            position: absolute;
+            top: 10%;
+            left:17%;
             margin: 0;
         }
-        #circle {
+        h2{
+            font-weight: normal;
+            font-size: 4.1vw;
             position: absolute;
-            top: 101px;
-            left:842px;
-            width: 418px;
-            height: 418px;
+            top: 19%;
+            left:17%;
+            margin: 0;
+        }
+        h3{
+            font-weight: normal;
+            font-size: 4.1vw;
+            position: absolute;
+            top: 28%;
+            left:17%;
+            margin: 0;
+        }
+        circle {
+
+            display: flex;
+            position:absolute;
+            top: 13%;
+            left:57%;
+            border-radius: 100%;
             background: #A9EFC1;
-            -moz-border-radius: 209px;
-            -webkit-border-radius: 209px;
-            border-radius: 209px;
-         }
+
+        }
+
+        .tenth_h {
+            width: 50vh;
+            height: 50vh;
+        }
+
+
         p1{
-            font-size: 23px;
+            font-size:3.5vh;
             position: absolute;
-            top: 211px;
-            left:932px;
+            top: 27vh;
+            left:61vw;
         }
         p2{
-            font-size: 23px;
+            font-size: 3.5vh;
             position: absolute;
-            top: 311px;
-            left:932px;
+            top: 40vh;
+            left:61vw;
         }
         button {
-            position: absolute;
-            top: 600px;
-            left:935px;
-            background: #A9EFC1;
+            display: inline-block;
+            position:absolute;
+            top: 70%;
+            left:61%;
+            border-radius: 2vh;
             border: 1px solid #A9EFC1;
-            width: 230px;
-            height: 70px;
-            border-radius: 20px;
+            background: #A9EFC1;
+
+        }
+        .tenth_w {
+            width: 15vw;
+            height: 4vw;
         }
         img{
             position: absolute;
-            top: 26%;
+            top: 35%;
             left: 13%
         }
     </style>
@@ -63,12 +90,13 @@
     <body style='overflow-x:hidden;'></body>
     <body bgcolor="#7AC982"></body>
     <h1 >Ищешь друзей?</h1>
-    <h1>Они ждут тебя </h1>
-    <h1 s>здесь! </h1>
-    <img src="images/fri.png" alt="error" width=" 36%"/>
-    <div id="circle"></div>
+    <h2>Они ждут тебя </h2>
+    <h3 s>здесь! </h3>
+    <img src="static/images/fri.png" alt="" height=" 65%"/>
+    <circle class="tenth_h "></circle>
+
     <p1>Логин:</p1>
     <p2>Пароль:</p2>
-    <a href="/reg"><button ><font size="4" >Зарегистрироваться</font></button></a>
+    <a href="/reg"><button class="tenth_w "><font size="3vw" >Зарегистрироваться</font></button></a>
 </body>
 </html>
