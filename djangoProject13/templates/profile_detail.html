@@ -1,0 +1,23 @@
+<!-- templates/profiles/profile_detail.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile Detail</title>
+</head>
+<body>
+   {% if profile.photo %}
+    <img src="{{ profile.photo.url }}" alt="Profile Photo" style="max-height:300px">
+{% else %}
+    <p>No photo available</p>
+{% endif %}
+    <h1>{{ profile.first_name }} {{ profile.last_name }}</h1>
+    <p>Возраст: {{ profile.age }}</p>
+    <p>Пол: {{ profile.gender }}</p>
+    <p>Институт: {{ profile.institution }}</p>
+    <p>Интересы: {{ profile.interests }}</p>
+    <p>Telegram: {{ profile.telegram_username }}</p>
+    <a href="{% url 'profile_list' %}">Назад</a>
+</body>
+</html>
