@@ -25,19 +25,6 @@
 
        <label for="age_filter">Возраст:</label>
        <input type="text" name="age_filter">
-
-       <label for="institute_filter">Институт:</label>
-       <select name="institute_filter">
-        <option value="">Любой</option>
-        <option value="IMKT">ИМКТ</option>
-        <option value="IMO">ИМО</option>
-        <option value="PI">ПИ</option>
-        <option value="SHIGN">ШИГН</option>
-        <option value="SHP">ШП</option>
-        <option value="SHM">ШМ</option>
-        <option value="SHEM">ШЭМ</option>
-        <option value="VISHRIMI">ВИШРИМИ</option>
-       </select>
        <input type="submit" value="Фильтр">
    </form>
     {% if message %}
@@ -58,6 +45,7 @@
                     <h2><a href="{% url 'profile_detail' profile.id %}">{{ profile.first_name }} {{ profile.last_name }}, {{ profile.age }}</a></h2>
 </li>
             <li><a href="{% url 'edit_profile' profile.id %}">Изменить профиль</a></li>
+            <a href="{% url 'delete_profile' profile.id %}">Удалить профиль</a>
             {% endfor %}
         </ul>
     {% endif %}

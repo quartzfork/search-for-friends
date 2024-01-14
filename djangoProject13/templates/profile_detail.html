@@ -18,7 +18,8 @@
     <p>Институт: {{ profile.institution }}</p>
     <p>Интересы: {{ profile.interests }}</p>
     <p>Telegram: {{ profile.telegram_username }}</p>
-   <button type="submit"><a href="{% url 'edit_profile' profile.id %}">Изменить профиль</a></button>
-   <button type="submit"><a href="{% url 'profile_list' %}">Назад</a></button>
+   <button type="submit" ><a href="{% url 'edit_profile' profile.id %}">Изменить профиль</a></button>
+   <button><a href="{% url 'profile_list' %}">Назад</a></button>
+
 </body>
 </html>

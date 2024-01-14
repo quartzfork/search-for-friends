@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Подтверждение удаления</title>
+</head>
+<body>
+    <h3>Вы уверены, что хотите удалить профиль {{ profile.first_name }} {{ profile.last_name }}?</h3>
+    <form method="post">
+        {% csrf_token %}
+        <input type="submit" value="Подтвердить удаление">
+        <button><a href="{% url 'profile_list' %}">Назад</a></button>
+
+    </form>
+
+</body>
+</html>

@@ -39,11 +39,7 @@ def profile_list(request):
         profiles = profiles.filter(gender=gender_filter)
     if age_filter:
         profiles = profiles.filter(age=age_filter)
-    if institute_filter and institute_filter in [choice[0] for choice in Profile.INSTITUTE_CHOICES]:
-        institute_choice = dict(Profile.INSTITUTE_CHOICES).get(institute_filter)
-        print(institute_filter)
-        print(Profile.INSTITUTE_CHOICES)
-        profiles = profiles.filter(institution=institute_choice)
+
 
     if not profiles:
         message = "Извините, но людей с такими критериями пока не зарегистрировано."
@@ -67,3 +63,11 @@ def create_profile(request):
 def profile_detail(request, profile_id):
     profile = Profile.objects.get(pk=profile_id)
     return render(request, 'profile_detail.html', {'profile': profile})
+
+
+def delete_profile(request, profile_id):
+    profile = get_object_or_404(Profile, pk=profile_id)
+    if request.method == 'POST':
+        profile.delete()
+        return redirect('profile_list')
+    return render(request, 'delete_profile.html', {'profile': profile})
