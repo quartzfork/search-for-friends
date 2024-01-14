@@ -1,7 +1,20 @@
+from django.shortcuts import render, get_object_or_404, redirect
 from django.shortcuts import render, redirect
 from .models import Profile
 from .form import ProfileForm
 from django.db.models import Q
+
+
+def edit_profile(request, profile_id):
+    profile = get_object_or_404(Profile, id=profile_id)
+    if request.method == 'POST':
+        form = ProfileForm(request.POST, request.FILES, instance=profile)
+        if form.is_valid():
+            form.save()
+            return redirect('profile_list')  # после успешного редактирования перенаправляем на страницу с профилями
+    else:
+        form = ProfileForm(instance=profile)
+    return render(request, 'edit_profile.html', {'form': form})
 
 
 def profile_list(request):
@@ -22,12 +35,15 @@ def profile_list(request):
             Q(interests__icontains=query)
         )
 
-    if gender_filter:
+    if gender_filter and gender_filter in [choice[0] for choice in Profile.GENDER_CHOICES]:
         profiles = profiles.filter(gender=gender_filter)
     if age_filter:
         profiles = profiles.filter(age=age_filter)
-    if institute_filter:
-        profiles = profiles.filter(institution=institute_filter)
+    if institute_filter and institute_filter in [choice[0] for choice in Profile.INSTITUTE_CHOICES]:
+        institute_choice = dict(Profile.INSTITUTE_CHOICES).get(institute_filter)
+        print(institute_filter)
+        print(Profile.INSTITUTE_CHOICES)
+        profiles = profiles.filter(institution=institute_choice)
 
     if not profiles:
         message = "Извините, но людей с такими критериями пока не зарегистрировано."
@@ -46,7 +62,6 @@ def create_profile(request):
     else:
         form = ProfileForm()
     return render(request, 'profile_form.html', {'form': form})
-
 
 
 def profile_detail(request, profile_id):
