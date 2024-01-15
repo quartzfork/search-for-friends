@@ -4,13 +4,51 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Profile List</title>
+    <style>
+        .profile{
+            border-bottom: 3px solid #609666;
+            margin-bottom: 40px;
+            padding-bottom: 40px;
+            width: 98%;
+        }
+        .profile a{
+            color: black;
+            text-decoration: none;
+        }
+        input[type='text']{
+            margin-bottom: 15px;
+        }
+        button[type='submit']{
+            margin-bottom: 15px;
 
+        }
+        .poisk{
+            width: 230px;
+            height: 40px;
+            color:white;
+            background-color:#466448;
+            text-decoration: none;
+            font-size: medium;
+
+        }
+        h1{
+            font-weight: normal;
+
+        }
+
+        ul {
+            list-style-type: none;
+        }
+
+    </style>
 </head>
 <body>
-    <h1>Поиск друзей в ДВФУ</h1>
+    <body style='overflow-x:hidden;'></body>
+    <body bgcolor="#A9EFC1"></body>
 
-    <button type="submit"><a href="{% url 'create_profile' %}">Создать пользователя</a></button>
-        <form method="get">
+        <h1>Поиск друзей в ДВФУ</h1>
+        <button type="submit" class="poisk"><a href="{% url 'create_profile' %}" style="text-decoration: none; color:white; ">Создать пользователя</a></button>
+        <form method="get" class="po">
           <input type="text" name="q" placeholder="Поиск">
           <button type="submit">Искать</button>
         </form>
@@ -26,7 +64,9 @@
        <label for="age_filter">Возраст:</label>
        <input type="text" name="age_filter">
        <input type="submit" value="Фильтр">
-   </form>
+       </form>
+   <div style="border: 1px solid #4b754f"></div>
+
     {% if message %}
         <H3>{{ message }}</H3>
         {% endif %}
@@ -34,7 +74,7 @@
     {% if profiles %}
         <ul>
             {% for profile in profiles %}
-
+<div class="profile">
     {% if profile.photo %}
         <img src="{{ profile.photo.url }}" alt="Фото" style="max-height:300px">
     {% else %}
@@ -46,6 +86,7 @@
 </li>
             <li><a href="{% url 'edit_profile' profile.id %}">Изменить профиль</a></li>
             <a href="{% url 'delete_profile' profile.id %}">Удалить профиль</a>
+                </div>
             {% endfor %}
         </ul>
     {% endif %}
